@@ -1,16 +1,14 @@
 import React,{useState} from "react";
 import { Sidebar } from 'primereact/sidebar';
 import { Button } from 'primereact/button';
+import ReactECharts from 'react-for-chart';
 
 
 
 export default function RedingtonFigma(){
-  const [visible, setVisible] = useState(false);
-  const customIcons = (
-    <>
-    <img></img>
-    </>
-  )
+  const PieChartdemo = {
+
+  }
 
     return(
         <div className=" flex w-auto flex-nowrap mt-4">
@@ -67,7 +65,7 @@ export default function RedingtonFigma(){
                         <div className="text-xl ml-2 flex flex-row"> 4 % 
                          <span className="text-green-500 text-xs ml-2 content-end mt-1"> ▲ 4%</span>
                         </div>
-                    </div>
+                    </div>s
                 </div>
                 <div className="flex flex-row">
                     <div>
