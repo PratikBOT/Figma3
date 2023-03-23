@@ -1,14 +1,77 @@
 import React,{useState} from "react";
 import { Sidebar } from 'primereact/sidebar';
 import { Button } from 'primereact/button';
-import ReactECharts from 'react-for-chart';
+import ReactECharts from 'echarts-for-react';
+import { color } from "echarts";
 
 
 
 export default function RedingtonFigma(){
-  const PieChartdemo = {
+  const PieChartdemo1 = {
+    tooltip: {
+        trigger: 'item'
+      },
+      legend: {
+        top: '5%',
+        left: 'center'
+    },
+    series: [
+        {
+          type: 'pie',
+          radius: ['30', '35%'],
+          avoidLabelOverlap: false,
+          label: {
+            show: true,
+            position: 'center'
+        },
+          emphasis: {
+            label: {
+              show: true,
+              fontSize: 40,
+              fontWeight: 'bold'
+            }
+        },
+          labelLine: {
+            show: false
+        },
+          data: [
+            { value: 38},
+            { value: 62,datasets : [{
+                backgroundColor : 'white',
+            }]},
+     
+        ]
+        }
+    ]
 
-  }
+  };
+    const BarLineChart1 = {
+        tile :{
+            Text  : 'Revenue Trend'
+        },
+        xAxis : {
+            type : 'category',
+            data:['FY 19-20','FY 20-21', 'FY 21-22', 'FY 22-23']
+        },
+        yAxis : {
+            type : 'value'
+        },
+        series: [
+            {
+                name : 'Revenue',
+                data : [2900,3800,3300,2100],
+                type : 'bar',
+                backgroundColor : ['var(--green-900)']
+            
+            },
+            {
+                name : 'Trend Line',
+                data : [2200,3100,2600,3200],
+                type : 'line',
+            }
+        ] 
+
+    }
 
     return(
         <div className=" flex w-auto flex-nowrap mt-4">
@@ -36,13 +99,13 @@ export default function RedingtonFigma(){
                         </div>
                     </div>
                 </div>
-                <div className="flex flex-row">
-                    <div>
-                        <div className="text-xl ml-2 flex flex-row">Target vs. Actual <span className="text-green-500 text-xs ml-2 mt-1"> ▲ 2%</span> </div>
-                    </div>
-                    
+                <div className="grid">
+                        <div className="text-xl ml-2 flex flex-row">Target vs. Actual <span className="text-green-500 text-xs ml-2 mt-1"> ▲ 2%</span></div>                        
+                        <div className="flex flex-row"><ReactECharts className=" " option = {PieChartdemo1}/>
+                          <ReactECharts className=" ml-1" option={BarLineChart1}/>                        
+                        </div>
+                        </div>
                 </div>
-            </div>
             <div className="flex flex-col w-6/12 h-72 m-4 border-2 rounded-md border-gray-400 bg-slate-100">
                <div className=" flex flex-row justify-between">
                   <div className="h-1/6  font-bold ml-2">Margin</div>
@@ -65,15 +128,14 @@ export default function RedingtonFigma(){
                         <div className="text-xl ml-2 flex flex-row"> 4 % 
                          <span className="text-green-500 text-xs ml-2 content-end mt-1"> ▲ 4%</span>
                         </div>
-                    </div>s
+                    </div>
                 </div>
                 <div className="flex flex-row">
-                    <div>
                         <div className="text-xl ml-2 flex flex-row">Target vs. Actual <span className="text-green-500 text-xs ml-2 mt-1"> ▲ 2%</span> </div>
-                    </div>
-                    
+                         <ReactECharts option = {PieChartdemo1}/>
+                         <ReactECharts option={BarLineChart1}/>                   
                 </div>
-            </div>
+            </div>            
         </div>
     )
 }
